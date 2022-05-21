@@ -1,0 +1,7 @@
+@import url("navbar.css");
+@import url("addform.css");
+@import url("tasklist.css");
+
+#title {
+  text-align: center;
+}
