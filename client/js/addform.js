@@ -1,5 +1,5 @@
 const fields = [
-  { lbl: "Username", type: "text" },
+  { lbl: "Title", type: "text" },
   { lbl: "Description", type: "textarea" },
   { lbl: "Deadline", type: "date" },
 ];
@@ -18,7 +18,7 @@ const AddFields = (formFields) => {
       </div>`
         : `<div class="field">
       <label for="${f.lbl.toLowerCase()}">${f.lbl}:</label>
-      <textarea id="${f.lbl.toLowerCase()}" name="${f.lbl.toLowerCase()}" rows="1" cols="10" required></textarea></div>`;
+      <textarea id="${f.lbl.toLowerCase()}" name="${f.lbl.toLowerCase()}" rows="1" cols="10"></textarea></div>`;
   });
 
   return flds;
@@ -30,6 +30,6 @@ const CreateForm = (formFields) => {
   return form;
 };
 
-document.getElementById("add-form").innerHTML = CreateForm(fields);
+$("#add-form").html(CreateForm(fields));
 
-// TODO: Handle submitting
+// TODO: Handle submitting Node.js

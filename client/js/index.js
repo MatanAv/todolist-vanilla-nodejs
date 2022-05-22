@@ -11,6 +11,7 @@ function LoadSiteComponents() {
 }
 
 function InjectHTML(id, url) {
+  /*   XML
   const xhttp = new XMLHttpRequest();
   xhttp.onload = () => {
     const elem = document.getElementById(id);
@@ -20,13 +21,16 @@ function InjectHTML(id, url) {
 
   xhttp.open("GET", url);
   xhttp.send();
+  */
+
+  // jQuery
+  $(`#${id}`).load(url);
 }
 
 function InjectJSScript(elem) {
   elem.querySelectorAll("script").forEach((script) => {
     const newScript = document.createElement("script");
     Array.from(script.attributes).forEach((attr) => {
-      //   attr.value = attr.value.replace("/js", "js");
       newScript.setAttribute(attr.name, attr.value);
       newScript.appendChild(document.createTextNode(script.innerHTML));
       script.parentNode.replaceChild(newScript, script);
