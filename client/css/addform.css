@@ -2,3 +2,16 @@
   width: 25%;
   margin: auto;
 }
+
+#add-form .field {
+  margin-bottom: 10px;
+}
+
+#add-form .field label {
+  margin-right: 5px;
+}
+
+/* TODO: Fix */
+#add-form input[type="submit"] {
+  text-align: center;
+}

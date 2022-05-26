@@ -1,14 +1,13 @@
-import Task from "./task";
-import { Task_Status_Codes } from "./constants";
-
-const { IN_PROGRESS, IN_LATE, COMPLETED } = Task_Status_Codes;
+import Task from "./task.js";
+import { taskStatusCodes } from "./constants.js";
+const { IN_PROGRESS, IN_LATE, COMPLETED } = taskStatusCodes;
 
 const tasks = [];
 
 // TODO: FetchTasks
 
 function ShowTasks(tasklist) {
-  tasksHTML = "";
+  let tasksHTML = "";
 
   const activeTasks = tasklist.filter((task) => {
     task.status !== COMPLETED;
@@ -26,7 +25,7 @@ function SetTaskCompleted(task) {
 }
 
 function TaskToHTMLItem(task) {
-  taskHTML = "";
+  let taskHTML = "";
 
   switch (task.status) {
     case IN_PROGRESS:
@@ -35,7 +34,7 @@ function TaskToHTMLItem(task) {
             <li>${task.title}</li>
             <li>${task.date}</li>
             <li>${task.status}</li>
-            ${task.desc !== "" && <li>task.status</li>}
+            ${task.desc !== "" ? `<li>${task.status}</li>` : ""}
           </ul>
         </li>`;
     case IN_LATE:
@@ -44,7 +43,7 @@ function TaskToHTMLItem(task) {
             <li>${task.title}</li>
             <li>${task.date}</li>
             <li>${task.status}</li>
-            ${task.desc !== "" && <li>task.status</li>}
+            ${task.desc !== "" ? `<li>${task.status}</li>` : ""}
           </ul>
         </li>`;
     default:

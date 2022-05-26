@@ -1,11 +1,7 @@
-const fields = [
-  { lbl: "Title", type: "text" },
-  { lbl: "Description", type: "textarea" },
-  { lbl: "Deadline", type: "date" },
-];
+import { addFormFields } from "./constants.js";
 
 const AddFields = (formFields) => {
-  flds = "";
+  let flds = "";
 
   formFields.forEach((f) => {
     flds +=
@@ -25,11 +21,13 @@ const AddFields = (formFields) => {
 };
 
 const CreateForm = (formFields) => {
-  form = AddFields(formFields);
+  let form = AddFields(formFields);
   form += `<input type="submit" value="Add">`;
   return form;
 };
 
-$("#add-form").html(CreateForm(fields));
+console.log("in addform.js");
+
+$("#add-form").html(CreateForm(addFormFields));
 
 // TODO: Handle submitting Node.js

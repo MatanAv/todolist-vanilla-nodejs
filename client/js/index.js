@@ -1,16 +1,33 @@
-import { Paths } from "./constants.js";
-import Task from "./task.js";
+// import Task from "./task.js";
+import { paths, scripts } from "./constants.js";
+
+// const { IN_PROGRESS, IN_LATE, COMPLETED } = taskStatusCodes;
 
 function LoadSiteComponents() {
-  const { navURL, addformURL } = Paths;
+  const { navURL, addformURL } = paths;
 
   window.addEventListener("load", () => {
-    InjectHTML("main", navURL);
-    InjectHTML("main", addformURL);
+    InjectHTMLPage("navbar", navURL);
+    InjectHTMLPage("main", addformURL);
   });
 }
 
-function InjectHTML(id, url) {
+function LoadScript(url, isModule = true) {
+  let head = document.getElementsByTagName("head")[0];
+  // let body = document.getElementsByTagName("body")[0];
+  let script = document.createElement("script");
+  script.type = isModule ? "module" : "text/javascript";
+  script.src = url;
+  head.appendChild(script);
+  // body.appendChild(script);
+}
+
+function LoadAllScripts() {
+  scripts.forEach((script) => LoadScript(script));
+}
+
+function InjectHTMLPage(id, url) {
+  $(`#${id}`).load(url);
   /*   XML
   const xhttp = new XMLHttpRequest();
   xhttp.onload = () => {
@@ -22,26 +39,20 @@ function InjectHTML(id, url) {
   xhttp.open("GET", url);
   xhttp.send();
   */
-
-  // jQuery
-  $(`#${id}`).load(url);
-}
-
-function InjectJSScript(elem) {
-  elem.querySelectorAll("script").forEach((script) => {
-    const newScript = document.createElement("script");
-    Array.from(script.attributes).forEach((attr) => {
-      newScript.setAttribute(attr.name, attr.value);
-      newScript.appendChild(document.createTextNode(script.innerHTML));
-      script.parentNode.replaceChild(newScript, script);
-    });
-  });
 }
 
 // function addTask() {}
 // function deleteTask() {}
 
-// const t = new Task("m", "n", "s", "d");
-// console.log(t);
-
+LoadAllScripts();
 LoadSiteComponents();
+
+// --- //
+
+// const tasks = [
+//   new Task("a1", "txt", IN_PROGRESS, "d"),
+//   new Task("a2", "txt", IN_PROGRESS, "d"),
+//   new Task("a3", "txt", IN_PROGRESS, "d"),
+// ];
+
+// console.log(tasks);
