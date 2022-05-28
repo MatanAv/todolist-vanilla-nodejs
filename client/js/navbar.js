@@ -1,17 +1,19 @@
-import { paths } from "./constants.js";
-const { addformURL, tasklistURL } = paths;
+// import { addFormFields, paths } from "./constants.js";
+// import { CreateForm } from "./addform.js";
+// const { addformURL, tasklistURL } = paths;
 
-let pageState = "Add"; // This is the initial state
+// function LoadPage(page) {
+//   if (page === pageState) return;
 
-$("#add-task-button").click(() => LoadPage("Add"));
-$("#show-tasks-button").click(() => LoadPage("Show"));
+//   pageState = page;
+//   let url = pageState === "Add" ? addformURL : tasklistURL;
 
-function LoadPage(page) {
-  console.log("here");
-  if (page === pageState) return;
+//   $("main").load(url);
 
-  pageState = page;
-  let url = page === "Add" ? addformURL : tasklistURL;
+//   // $("main").load(url, () => {
+//   //   if (pageState === "Add") $("#add-form").html(CreateForm(addFormFields));
+//   //   // pageState === "Add" ? $("#add-form").html(CreateForm(addFormFields)) : "";
+//   // });
+// }
 
-  $("main").load(url);
-}
+// let pageState = "Add"; // This is the initial state

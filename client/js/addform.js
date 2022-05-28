@@ -1,9 +1,9 @@
-import { addFormFields } from "./constants.js";
+import { onElementReady } from "./utils.js";
 
-const AddFields = (formFields) => {
+const AddFields = (fields) => {
   let flds = "";
 
-  formFields.forEach((f) => {
+  fields.forEach((f) => {
     flds +=
       f.type !== "textarea"
         ? `<div class="field">
@@ -20,14 +20,12 @@ const AddFields = (formFields) => {
   return flds;
 };
 
-const CreateForm = (formFields) => {
-  let form = AddFields(formFields);
+const CreateForm = (fields) => {
+  let form = AddFields(fields);
   form += `<input type="submit" value="Add">`;
   return form;
 };
 
-console.log("in addform.js");
-
-$("#add-form").html(CreateForm(addFormFields));
-
-// TODO: Handle submitting Node.js
+export const ShowAddForm = async (formFields) => {
+  onElementReady("#add-form", (form) => form.html(CreateForm(formFields)));
+};

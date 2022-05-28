@@ -2,6 +2,8 @@ import Task from "./task.js";
 import { taskStatusCodes } from "./constants.js";
 const { IN_PROGRESS, IN_LATE, COMPLETED } = taskStatusCodes;
 
+console.log("in tasklist.js");
+
 const tasks = [];
 
 // TODO: FetchTasks
