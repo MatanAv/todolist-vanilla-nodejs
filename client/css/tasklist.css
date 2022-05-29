@@ -1,0 +1,13 @@
+#show-tasks div {
+  display: flex;
+  justify-content: center;
+}
+
+#show-tasks ul li {
+  font-size: 12px;
+  /* list-style-type: none; */
+}
+
+#task-count {
+  text-align: center;
+}

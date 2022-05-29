@@ -24,3 +24,8 @@
 // console.log(num);
 // console.log(arr);
 // console.log(obj);
+
+// TASKS //
+// const t1 = new Task("Hi", "Hello", IN_PROGRESS, new Date().toDateString());
+// const t2 = new Task("Hi", "", IN_PROGRESS, new Date().toDateString());
+// const tasks = [t1, t2];

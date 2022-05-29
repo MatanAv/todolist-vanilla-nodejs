@@ -1,31 +1,29 @@
 import { onElementReady } from "./utils.js";
 
-const AddFields = (fields) => {
+const addFields = (fields) => {
   let flds = "";
 
-  fields.forEach((f) => {
+  Object.entries(fields).forEach((f) => {
+    let [label, lowerLabel, type] = [f[0], f[0].toLowerCase(), f[1].type];
     flds +=
-      f.type !== "textarea"
+      type !== "textarea"
         ? `<div class="field">
-        <label for="${f.lbl.toLowerCase()}">${f.lbl}:</label>
-        <input id="${f.lbl.toLowerCase()}" name="${f.lbl.toLowerCase()}" type="${
-            f.type
-          }" required>
+        <label for="${lowerLabel}">${label}:</label>
+        <input id="${lowerLabel}" name="${lowerLabel}" type="${type}" required>
       </div>`
         : `<div class="field">
-      <label for="${f.lbl.toLowerCase()}">${f.lbl}:</label>
-      <textarea id="${f.lbl.toLowerCase()}" name="${f.lbl.toLowerCase()}" rows="1" cols="10"></textarea></div>`;
+      <label for="${lowerLabel}">${label}:</label>
+      <textarea id="${lowerLabel}" name="${lowerLabel}" rows="1" cols="10"></textarea></div>`;
   });
 
   return flds;
 };
 
-const CreateForm = (fields) => {
-  let form = AddFields(fields);
+const createForm = (fields) => {
+  let form = addFields(fields);
   form += `<input type="submit" value="Add">`;
   return form;
 };
 
-export const ShowAddForm = async (formFields) => {
-  onElementReady("#add-form", (form) => form.html(CreateForm(formFields)));
-};
+export const showAddForm = async (formFields) =>
+  onElementReady("#add-form", (elem) => elem.html(createForm(formFields)));

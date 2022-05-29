@@ -1,43 +1,44 @@
-import { ShowAddForm } from "./addform.js";
+import { showAddForm } from "./addform.js";
 import { addFormFields, comps } from "./constants.js";
-import { LoadHTMLComponent, onElementReady } from "./utils.js";
+import { showTasks } from "./tasklist.js";
+import { loadHTMLComponent, onElementReady } from "./utils.js";
 
 // const states = { pageState: "Add" };
 let pageState = "Add";
 
-function NavbarButtonsListener() {
+function navbarButtonsListener() {
   onElementReady("#add-task-button", (element) => {
     element.click(() => {
-      HandlePageRequest("Add");
-      ShowAddForm(addFormFields);
+      handlePageRequest("Add");
+      showAddForm(addFormFields);
     });
   });
   onElementReady("#show-tasks-button", (element) => {
-    element.click(() => HandlePageRequest("Show"));
+    element.click(() => {
+      handlePageRequest("Show");
+      showTasks();
+    });
   });
 }
 
-function HandlePageRequest(page) {
+function handlePageRequest(page) {
   if (page === pageState) return;
 
-  const [addformURL, tasklistURL] = [comps.addform.url, comps.tasklist.url];
   pageState = page;
-  let url = pageState === "Add" ? addformURL : tasklistURL;
-
-  LoadHTMLComponent("main", url);
+  pageState === "Add"
+    ? loadHTMLComponent("main", comps.addform.url)
+    : loadHTMLComponent("main", comps.tasklist.url);
 }
 
-function InitSite() {
+function initSite() {
   let { tasklist, ...rest } = comps;
   rest = Object.values(rest);
 
   $("body").ready(() => {
-    rest.forEach((e) => {
-      LoadHTMLComponent(e.loadToElem, e.url);
-    });
-    ShowAddForm(addFormFields);
-    NavbarButtonsListener();
+    rest.forEach((e) => loadHTMLComponent(e.elementId, e.url));
+    showAddForm(addFormFields);
+    navbarButtonsListener();
   });
 }
 
-InitSite();
+initSite();
