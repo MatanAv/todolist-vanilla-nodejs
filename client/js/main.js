@@ -1,43 +1,25 @@
-import { showAddForm } from "./addform.js";
-import { addFormFields, comps } from "./constants.js";
-import { showTasks } from "./tasklist.js";
+import { comps } from "./constants.js";
+import { setNavListeners } from "./navbar.js";
 import { loadHTMLComponent, onElementReady } from "./utils.js";
+import { showAddForm } from "./addform.js";
+import AppState from "./states.js";
 
-// const states = { pageState: "Add" };
-let pageState = "Add";
+const app = new AppState();
 
-function navbarButtonsListener() {
-  onElementReady("#add-task-button", (element) => {
-    element.click(() => {
-      handlePageRequest("Add");
-      showAddForm(addFormFields);
-    });
-  });
-  onElementReady("#show-tasks-button", (element) => {
-    element.click(() => {
-      handlePageRequest("Show");
-      showTasks();
-    });
-  });
-}
-
-function handlePageRequest(page) {
-  if (page === pageState) return;
-
-  pageState = page;
-  pageState === "Add"
-    ? loadHTMLComponent("main", comps.addform.url)
-    : loadHTMLComponent("main", comps.tasklist.url);
+function setButtonsListeners() {
+  setNavListeners(app);
 }
 
 function initSite() {
+  app.pageState = "Add";
+
   let { tasklist, ...rest } = comps;
   rest = Object.values(rest);
 
   $("body").ready(() => {
     rest.forEach((e) => loadHTMLComponent(e.elementId, e.url));
-    showAddForm(addFormFields);
-    navbarButtonsListener();
+    showAddForm();
+    setButtonsListeners();
   });
 }
 

@@ -1,3 +1,4 @@
+import { addFormFields } from "./constants.js";
 import { onElementReady } from "./utils.js";
 
 const addFields = (fields) => {
@@ -25,5 +26,7 @@ const createForm = (fields) => {
   return form;
 };
 
-export const showAddForm = async (formFields) =>
-  onElementReady("#add-form", (elem) => elem.html(createForm(formFields)));
+export const showAddForm = async () =>
+  onElementReady("#add-form", (elem) => elem.html(createForm(addFormFields)));
+
+const handleTaskSubmit = () => {};
