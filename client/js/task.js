@@ -1,3 +1,7 @@
+import { taskStatusCodes } from "./constants.js";
+
+const { IN_PROGRESS, IN_LATE, COMPLETED } = taskStatusCodes;
+
 const createUniqueId = (() => {
   let firstId = 0;
   return function () {
@@ -6,11 +10,11 @@ const createUniqueId = (() => {
 })();
 
 export default class Task {
-  constructor(title, desc, status, deadline) {
+  constructor(title, desc, deadline) {
     this.id = createUniqueId();
     this.title = title;
     this.desc = desc;
-    this.status = status;
     this.deadline = deadline;
+    this.status = IN_PROGRESS;
   }
 }

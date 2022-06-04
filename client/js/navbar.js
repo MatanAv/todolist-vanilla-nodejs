@@ -1,6 +1,6 @@
 import { handlePageRequest, onElementReady } from "./utils.js";
-import { showAddForm } from "./addform.js";
-import { showTasks } from "./tasklist.js";
+import { showAddForm } from "./add-form.js";
+import { showTasks } from "./task-list.js";
 
 export const setNavListeners = (app) => {
   onElementReady("#add-task-button", (element) => {
