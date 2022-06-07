@@ -1,8 +1,8 @@
-import { comps } from "./constants.js";
-import { setNavListeners } from "./navbar.js";
-import { loadHTMLComponent, onElementReady } from "./utils.js";
-import { showAddForm } from "./add-form.js";
-import AppState from "./app-state.js";
+import { comps } from "./js/constants.js";
+import { setNavListeners } from "./js/navbar.js";
+import { loadHTMLComponent, onElementReady } from "./js/utils.js";
+import { showAddForm } from "./js/add-form.js";
+import AppState from "./js/app-state.js";
 
 const app = new AppState();
 

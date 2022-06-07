@@ -13,8 +13,8 @@ export const comps = {
   tasklist: { elementId: "main", url: `${compsStr}/tasklist.html` },
 };
 
-export const taskStatusCodes = {
-  IN_PROGRESS: "In Progress",
-  IN_LATE: "In Late",
-  COMPLETED: "Completed",
-};
+// export const taskStatusCodes = {
+//   IN_PROGRESS: "In Progress",
+//   IN_LATE: "In Late",
+//   COMPLETED: "Completed",
+// };
