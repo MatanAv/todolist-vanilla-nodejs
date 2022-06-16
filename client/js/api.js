@@ -1,11 +1,23 @@
 const fetchTasks = async () => {
-  const tasks = await fetch("/todos");
-
-  return tasks.json();
+  const req = await axios.get("/todos");
+  return req.data;
 };
 
-// const addNewTask = async (url, task) => {
-//   $.post("/api/addtask", task, () => console.log("is here"));
-// };
+const postTask = async (task) => {
+  try {
+    const res = await axios.post("/todos", task);
+  } catch (error) {
+    alert(error);
+  }
+};
 
-export { fetchTasks };
+const completeTask = async (id) => {
+  try {
+    const res = await axios.put(`/todos/${id}`, { completed: true });
+    return res.data.data;
+  } catch (error) {
+    alert(error);
+  }
+};
+
+export { fetchTasks, postTask, completeTask };

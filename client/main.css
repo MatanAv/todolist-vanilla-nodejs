@@ -2,3 +2,7 @@
 @import url("css/navbar.css");
 @import url("css/addform.css");
 @import url("css/tasklist.css");
+
+* {
+  font-family: "Fira Code", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}

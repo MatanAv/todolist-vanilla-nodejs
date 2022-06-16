@@ -12,9 +12,3 @@ export const comps = {
   addform: { elementId: "main", url: `${compsStr}/addform.html` },
   tasklist: { elementId: "main", url: `${compsStr}/tasklist.html` },
 };
-
-// export const taskStatusCodes = {
-//   IN_PROGRESS: "In Progress",
-//   IN_LATE: "In Late",
-//   COMPLETED: "Completed",
-// };

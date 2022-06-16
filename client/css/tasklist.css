@@ -1,13 +1,26 @@
+#task-count {
+  text-align: center;
+  /* font-family: "Fira Code", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
+}
+
 #show-tasks div {
   display: flex;
   justify-content: center;
 }
 
 #show-tasks ul li {
-  font-size: 12px;
-  /* list-style-type: none; */
+  font-size: 14px;
+  /* font-family: "Fira Code", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
 }
 
-#task-count {
-  text-align: center;
+.task-item ul li {
+  list-style-type: none;
+}
+
+.task-item li {
+  padding-bottom: 1vh;
+}
+
+.task-item {
+  padding-bottom: 2.2vh;
 }

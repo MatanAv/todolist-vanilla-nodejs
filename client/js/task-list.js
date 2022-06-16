@@ -1,31 +1,49 @@
-import Task from "./task.js";
 import { onElementReady } from "./utils.js";
-import { fetchTasks } from "./api.js";
+import { completeTask, fetchTasks } from "./api.js";
+
+let currTodos = [];
 
 const taskToHTMLItem = (task) => {
-  let taskHTML = `<li class="in-progress">`;
+  let taskHTML = `<li class="task-item">`;
   taskHTML += `<ul>
+  <li>${task.id}</li>
   <li>${task.title}</li>
   <li>${task.deadline}</li>
-  ${task.desc !== "" ? `<li>${task.desc}</li>` : ""}</ul></li>`;
+  ${task.desc !== "" ? `<li>${task.desc}</li>` : ""}
+  <li><button id="${task.id}" class="btn-done" type="button">Done</button></li>
+  </ul></li>`;
 
   return taskHTML;
 };
 
 const tasklistToHTML = async () => {
-  const todos = await fetchTasks();
+  currTodos = await fetchTasks();
 
-  let tasksHTML = `<p id="task-count">There are ${todos.length} tasks in your list.</p>`;
-  if (!todos.length) return tasksHTML;
+  let tasksHTML = `<p id="task-count">There are ${currTodos.length} tasks in your list.</p>`;
+  if (!currTodos.length) return tasksHTML;
 
   tasksHTML += `<div id="task-list"><ul>`;
-  todos.forEach((task) => (tasksHTML += taskToHTMLItem(task)));
+  currTodos.forEach((task) => (tasksHTML += taskToHTMLItem(task)));
   tasksHTML += `</ul></div>`;
 
   return tasksHTML;
 };
 
+const handleTaskCompleted = async (e) => {
+  const id = Number(e.delegateTarget.id);
+
+  currTodos = await completeTask(id);
+  alert(`Task ${id} has been successfully removed.`);
+
+  showTasks();
+};
+
+const setDoneButtonsListener = () => {
+  $(".btn-done").click((e) => handleTaskCompleted(e));
+};
+
 export const showTasks = async () => {
   const code = await tasklistToHTML();
   onElementReady("#show-tasks", (elem) => elem.html(code));
+  setDoneButtonsListener();
 };

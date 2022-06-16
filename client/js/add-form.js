@@ -1,5 +1,6 @@
 import { addFormFields } from "./constants.js";
 import { onElementReady } from "./utils.js";
+import { postTask } from "./api.js";
 import Task from "./task.js";
 
 const addFields = (fields) => {
@@ -27,16 +28,6 @@ const createForm = (fields) => {
   return formHTML;
 };
 
-export const showAddForm = async () => {
-  onElementReady("#add-form", (elem) => {
-    elem.html(createForm(addFormFields));
-    elem.submit((e) => {
-      e.preventDefault();
-      handleTaskSubmit();
-    });
-  });
-};
-
 const handleTaskSubmit = () => {
   let task = {};
 
@@ -47,8 +38,18 @@ const handleTaskSubmit = () => {
   });
 
   task = new Task(task.title, task.description, task.deadline);
-  // task = JSON.stringify(new Task(task.title, task.description, task.deadline));
-  // TODO: 1. post it
-  console.log(task);
-  // $.post(dbURL, task, () => alert("Task has been added successfully."));
+
+  postTask(task);
+  alert("Your task has been successfully added.");
+  showAddForm();
+};
+
+export const showAddForm = async () => {
+  onElementReady("#add-form", (elem) => {
+    elem.html(createForm(addFormFields));
+    elem.submit((e) => {
+      e.preventDefault();
+      handleTaskSubmit();
+    });
+  });
 };
