@@ -38,12 +38,12 @@ const handleTaskCompleted = async (e) => {
   showTasks();
 };
 
-const setDoneButtonsListener = () => {
-  $(".btn-done").click((e) => handleTaskCompleted(e));
+const setDoneButtonsListener = (buttons) => {
+  buttons.click((e) => handleTaskCompleted(e));
 };
 
 export const showTasks = async () => {
   const code = await tasklistToHTML();
   onElementReady("#show-tasks", (elem) => elem.html(code));
-  setDoneButtonsListener();
+  onElementReady(".btn-done", setDoneButtonsListener);
 };
