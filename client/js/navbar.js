@@ -13,7 +13,7 @@ export const setNavListeners = (app) => {
   onElementReady("#show-tasks-button", (element) => {
     element.click(() => {
       handlePageRequest(app, "Show");
-      showTasks();
+      showTasks(0);
     });
   });
 };

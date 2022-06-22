@@ -1,0 +1,10 @@
+.pages {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin-top: -1.5vh;
+}
+
+.pages li {
+  margin: 0 0.5vw;
+}

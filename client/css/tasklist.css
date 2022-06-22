@@ -1,15 +1,19 @@
+@import url(./pages.css);
+
 #task-count {
   text-align: center;
   /* font-family: "Fira Code", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
 }
 
-#show-tasks div {
+#task-items {
+  margin-top: 2vh;
   display: flex;
   justify-content: center;
 }
 
-#show-tasks ul li {
+#task-items ul li {
   font-size: 14px;
+  list-style-type: none;
   /* font-family: "Fira Code", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
 }
 

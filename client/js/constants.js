@@ -1,5 +1,7 @@
 const compsStr = "components";
 
+export const PAGE_SIZE = 3;
+
 export const addFormFields = {
   Title: { type: "text" },
   Description: { type: "textarea" },

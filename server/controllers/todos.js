@@ -1,14 +1,19 @@
 let { todos } = require(`../data`);
+const { PAGE_SIZE } = require(`../config`);
 
 const getTodos = (req, res) => {
-  // const {page} = req.params;
+  const page = Number(req.query.page);
 
   let tasks = todos.filter((t) => !t.completed);
+  const totalTodos = tasks.length;
 
-  // if (page * 5 < todos.length) tasks = todos.slice(page * 5, (page + 1) * 5);
-  // else return;
+  page * PAGE_SIZE < todos.length
+    ? (tasks = tasks.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE))
+    : res
+        .status(400)
+        .json({ success: false, msg: "Requested page doesn't exists." });
 
-  res.json(tasks);
+  res.status(200).json({ tasks, totalTodos });
 };
 
 const createTodos = (req, res) => {

@@ -1,5 +1,5 @@
-const fetchTasks = async () => {
-  const req = await axios.get("/todos");
+const fetchTasks = async (pageNum) => {
+  const req = await axios.get(`/todos?page=${pageNum}`);
   return req.data;
 };
 
