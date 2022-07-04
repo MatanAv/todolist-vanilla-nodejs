@@ -4,7 +4,7 @@ import { postTask } from "./api.js";
 import Task from "./task.js";
 
 const addFields = (fields) => {
-  let flds = "";
+  let flds = `<div id="form-flds">`;
 
   Object.entries(fields).forEach((f) => {
     let [label, lowerLabel, type] = [f[0], f[0].toLowerCase(), f[1].type];
@@ -19,12 +19,15 @@ const addFields = (fields) => {
       <textarea id="${lowerLabel}" name="${lowerLabel}" rows="1" cols="10"></textarea></div>`;
   });
 
+  flds += `</div>`;
+
   return flds;
 };
 
 const createForm = (fields) => {
   let formHTML = addFields(fields);
-  formHTML += `<input id="submit" type="submit" value="Submit">`;
+  formHTML += `<div style="text-align: center; margin-top: 1rem;">
+  <input class="btn" id="submit" type="submit" value="Submit"></div>`;
   return formHTML;
 };
 

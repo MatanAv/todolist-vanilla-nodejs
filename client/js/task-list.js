@@ -31,7 +31,8 @@ const tasklistToHTML = async (pageNum) => {
   [pageData.todos, pageData.totalTodos] = [data.tasks, data.totalTodos];
   const [todos] = [data.tasks];
 
-  let tasksHTML = `<p id="task-count">There are ${pageData.totalTodos} tasks in your list.</p>`;
+  let tasksHTML = `<p id="task-count">There are <strong>${pageData.totalTodos}</strong>
+   tasks in your list.</p>`;
   if (!todos.length) return tasksHTML;
 
   tasksHTML += `<div id="task-items"><ul>`;

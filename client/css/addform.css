@@ -1,24 +1,21 @@
+@import url("./buttons.css");
+
 #add-form {
-  width: 25%;
-  margin: auto;
-  /* font-family: "Fira Code", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; */
-  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#add-form .field {
-  margin-bottom: 10px;
+.field {
+  display: flex;
+  width: max-content;
+  margin-bottom: 1rem;
 }
 
-#add-form .field label {
-  margin-right: 5px;
+.field label {
+  margin-right: 1rem;
 }
 
-/* TODO: Fix */
 #add-form input[type="submit"] {
-  text-align: center;
-}
-
-#add-form .field textarea {
-  max-height: 15px;
-  font-size: 13px;
+  padding: 0.5rem 1rem;
 }

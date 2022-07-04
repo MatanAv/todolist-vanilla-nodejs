@@ -2,9 +2,13 @@
   display: flex;
   justify-content: center;
   list-style-type: none;
-  margin-top: -1.5vh;
 }
 
 .pages li {
   margin: 0 0.5vw;
+}
+
+.pages .btn {
+  border-radius: 2rem;
+  padding: 0.25rem 0.7rem;
 }
