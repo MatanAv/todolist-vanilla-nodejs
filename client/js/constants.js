@@ -1,6 +1,7 @@
 const compsStr = "components";
 
-export const PAGE_SIZE = 3;
+export const PAGE_SIZE = 6;
+export const TODOS_NUM_COLS = 3;
 
 export const addFormFields = {
   Title: { type: "text" },

@@ -1,25 +1,39 @@
 @import url("./pages.css");
+@import url("./todo-item.css");
+
+#tasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 #task-count {
   text-align: center;
-  margin: 1rem 0;
 }
 
 #task-items {
-  margin-top: 2vh;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 2rem 2rem;
+  width: 75%;
+  margin: 3rem 0;
 }
 
-#task-items ul li {
-  font-size: 0.9rem;
+@media screen and (max-width: 600px) {
+  #task-items {
+    grid-template-columns: auto auto;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #task-items {
+    grid-template-columns: auto;
+    justify-content: center;
+  }
+}
+
+#task-items ul {
   list-style-type: none;
-}
-
-.task-item li {
-  padding-bottom: 1vh;
-}
-
-.task-item {
-  margin: 1.5rem;
+  font-size: 0.9rem;
 }

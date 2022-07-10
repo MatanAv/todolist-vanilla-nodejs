@@ -4,8 +4,9 @@
   background-color: rgb(0, 132, 255);
   color: white;
   font-weight: 500;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   cursor: pointer;
+  padding: 0.7rem;
 }
 
 .btn:hover {

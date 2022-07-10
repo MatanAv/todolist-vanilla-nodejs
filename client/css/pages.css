@@ -1,4 +1,4 @@
-.pages {
+.pages ul {
   display: flex;
   justify-content: center;
   list-style-type: none;

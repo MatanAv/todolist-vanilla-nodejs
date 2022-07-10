@@ -1,6 +1,6 @@
 import { onElementReady } from "./utils.js";
 import { completeTask, fetchTasks } from "./api.js";
-import { PAGE_SIZE } from "./constants.js";
+import { PAGE_SIZE, TODOS_NUM_COLS } from "./constants.js";
 import { createPageButtons } from "./pages.js";
 
 class TodosPage {
@@ -13,33 +13,33 @@ class TodosPage {
 
 const pageData = new TodosPage(0);
 
-const taskToHTMLItem = (task) => {
-  let taskHTML = `<li class="task-item">`;
-  taskHTML += `<ul>
-  <li>${task.id}</li>
-  <li>${task.title}</li>
-  <li>${task.deadline}</li>
-  ${task.desc !== "" ? `<li>${task.desc}</li>` : ""}
-  <li><button id="${task.id}" class="btn-done" type="button">Done</button></li>
-  </ul></li>`;
+const todoItemToHTML = (t) => {
+  let itemHTML = `<div class="todo-item todo-in-time">`;
+  itemHTML += `<ul><div class="todo-heading"><h4>${t.title}</h4></div>
+  <div class="todo-content"><ul><li>${t.deadline}</li>
+  ${t.desc !== "" ? `<li>${t.desc}</li>` : ""}</ul>
+  <button id="${t.id}" class="btn-done" type="button">Done</button>
+  </div></ul></div>`;
 
-  return taskHTML;
+  return itemHTML;
 };
 
-const tasklistToHTML = async (pageNum) => {
+const todoPageToHTML = async (pageNum) => {
   const data = await fetchTasks(pageNum);
   [pageData.todos, pageData.totalTodos] = [data.tasks, data.totalTodos];
   const [todos] = [data.tasks];
 
-  let tasksHTML = `<p id="task-count">There are <strong>${pageData.totalTodos}</strong>
+  let todoPageHTML = `<p id="task-count">There are <strong>${pageData.totalTodos}</strong>
    tasks in your list.</p>`;
-  if (!todos.length) return tasksHTML;
+  if (!todos.length) return todoPageHTML;
 
-  tasksHTML += `<div id="task-items"><ul>`;
-  todos.forEach((task) => (tasksHTML += taskToHTMLItem(task)));
-  tasksHTML += `</ul></div>`;
+  todoPageHTML += `<div id="task-items">`;
+  todos.forEach((task) => (todoPageHTML += todoItemToHTML(task)));
+  todoPageHTML += `</div>`;
 
-  return tasksHTML;
+  todoPageHTML += createPageButtons(Math.ceil(pageData.totalTodos / PAGE_SIZE));
+
+  return todoPageHTML;
 };
 
 const handleTaskCompleted = async (e) => {
@@ -65,11 +65,8 @@ const setPageButtonsListener = (buttons) => {
 };
 
 export const showTasks = async (pageNum) => {
-  const code = await tasklistToHTML(pageNum);
+  const code = await todoPageToHTML(pageNum);
   onElementReady("#tasks", (elem) => elem.html(code));
   onElementReady(".btn-done", setDoneButtonsListener);
-  onElementReady("#task-pages", (elem) =>
-    elem.html(createPageButtons(Math.ceil(pageData.totalTodos / PAGE_SIZE)))
-  );
   onElementReady(".page-btn", setPageButtonsListener);
 };
