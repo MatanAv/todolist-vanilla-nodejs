@@ -1,13 +1,17 @@
 const fetchTasks = async (pageNum) => {
-  const req = await axios.get(`/todos?page=${pageNum}`);
-  return req.data;
+  try {
+    const req = await axios.get(`/todos?page=${pageNum}`);
+    return req.data;
+  } catch (error) {
+    alert(error.response.data.msg);
+  }
 };
 
 const postTask = async (task) => {
   try {
     const res = await axios.post("/todos", task);
   } catch (error) {
-    alert(error);
+    alert(error.response.data.msg);
   }
 };
 

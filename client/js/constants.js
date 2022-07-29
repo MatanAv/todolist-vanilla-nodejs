@@ -1,7 +1,4 @@
-const compsStr = "components";
-
-export const PAGE_SIZE = 6;
-export const TODOS_NUM_COLS = 3;
+export const TASKS_PER_PAGE = 6;
 
 export const addFormFields = {
   Title: { type: "text" },
@@ -10,8 +7,9 @@ export const addFormFields = {
 };
 
 export const comps = {
-  header: { elementId: "header", url: `${compsStr}/header.html` },
-  nav: { elementId: "navbar", url: `${compsStr}/navbar.html` },
-  addform: { elementId: "main", url: `${compsStr}/addform.html` },
-  tasklist: { elementId: "main", url: `${compsStr}/tasklist.html` },
+  header: { elementId: "header", url: `components/header.html` },
+  nav: { elementId: "navbar", url: `components/navbar.html` },
+  addform: { elementId: "main", url: `components/addform.html` },
+  tasklist: { elementId: "main", url: `components/tasklist.html` },
+  footer: { elementId: "footer", url: `components/footer.html` },
 };

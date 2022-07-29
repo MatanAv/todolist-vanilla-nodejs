@@ -13,27 +13,26 @@
 
 #task-items {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 23% 23% 23%;
   gap: 2rem 2rem;
-  width: 75%;
-  margin: 3rem 0;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem 0;
+  font-size: 0.9rem;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
   #task-items {
-    grid-template-columns: auto auto;
-    justify-content: center;
+    grid-template-columns: 40% 40%;
   }
 }
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 550px) {
   #task-items {
-    grid-template-columns: auto;
-    justify-content: center;
+    grid-template-columns: 85%;
   }
 }
 
 #task-items ul {
   list-style-type: none;
-  font-size: 0.9rem;
 }

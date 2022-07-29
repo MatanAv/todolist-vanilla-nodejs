@@ -27,6 +27,12 @@ const createTodos = (req, res) => {
 
   task.id = todos.length + 1;
   todos.push(task);
+
+  todos.sort((a, b) => {
+    const [d1, d2] = [new Date(a.deadline), new Date(b.deadline)];
+    return d1 < d2 ? -1 : 1;
+  });
+
   res.status(201).json({ success: true, data: task });
 };
 

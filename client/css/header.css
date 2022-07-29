@@ -1,7 +1,17 @@
 header {
-  background-color: black;
-  color: white;
-  /* height: 12vh; */
+  /* background-image: url("../imgs/bg-monstera-6238107.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: black; */
+
+  background-color: #f3f3f3;
+  color: black;
+  height: 17vh;
+
+  /* background-color: black;
+  color: white; */
+  /* height: 22vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;

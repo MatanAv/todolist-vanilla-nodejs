@@ -6,16 +6,51 @@
   align-items: center;
 }
 
+#form-flds {
+  width: 50%;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 600px) {
+  #form-flds {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #form-flds {
+    width: 90%;
+  }
+}
+
 .field {
+  width: 100%;
   display: flex;
-  width: max-content;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem 0;
 }
 
 .field label {
-  margin-right: 1rem;
+  margin-bottom: 0.3rem;
 }
 
-#add-form input[type="submit"] {
-  /* padding: 0.5rem 1rem; */
+.user-input {
+  width: inherit;
+  height: 2.7rem;
+  padding: 10px;
+  font-size: 1.1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.3rem;
+}
+
+.field textarea {
+  resize: none;
+}
+
+.form-submit {
+  text-align: center;
+  margin-top: 1.5rem;
 }
